@@ -1,0 +1,371 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* ===================== Birthday Page Styles ===================== */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000000 !important;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: #000000 !important;
+  padding: 120px 4rem 4rem 4rem;
+}
+
+.header {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+}
+
+.header h1 {
+  font-family: var(--font-julee), 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 3.5rem;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Left: Typewriter Code */
+.code-side {
+  width: 50%;
+  /* Half screen on laptop */
+  max-width: 700px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-text {
+  font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  color: #eeeeee;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.code-text .string {
+  color: #00d4ff;
+}
+
+.code-text .keyword {
+  color: #ff007f;
+  font-weight: bold;
+}
+
+.code-text .comments {
+  color: #70a1a1;
+}
+
+/* Right: Globe */
+.globe-side {
+  position: absolute;
+  right: -300px;
+  top: 50%;
+  transform: translateY(-40%);
+  width: 900px;
+  height: 900px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@media (min-width: 1600px) {
+  .globe-side {
+    right: -100px;
+    /* Bring it closer on very wide screens */
+  }
+}
+
+.copyright {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #888;
+  opacity: 0.8;
+}
+
+.copyright hr {
+  border: 0;
+  border-top: 1px solid #333;
+  margin-bottom: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.copyright p {
+  margin: 0;
+}
+
+.copyright a {
+  text-decoration: none;
+  color: #ff007f;
+  transition: color 0.2s;
+}
+
+.copyright a:hover {
+  text-decoration: none;
+  color: #00d4ff;
+}
+
+/* ===================== Intro: Slider & Bokeh ===================== */
+
+.intro-page {
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bokeh-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bokeh-orb {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+  border-radius: 500px;
+  filter: blur(40px);
+}
+
+.intro-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.intro-text {
+  font-family: var(--font-julee), cursive;
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Slider Track */
+.slider-container {
+  position: relative;
+  width: 300px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.08);
+  /* Frosted glass look */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  box-shadow: inset 0 2px 50px rgba(0, 0, 0, 0.5);
+}
+
+.slider-track {
+  position: absolute;
+  inset: 2px;
+  border-radius: 38px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #ec4899, #f472b6);
+  /* Pink gradient */
+  opacity: 0.3;
+}
+
+.slider-label {
+  position: relative;
+  color: #fff;
+  font-size: 0.9rem;
+  font-family: var(--font-montserrat), sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Slider Handle */
+.slider-handle {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.slider-handle:active {
+  cursor: grabbing;
+}
+
+.handle-icon {
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.fade-in {
+  animation: mainFadeIn 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+}
+
+@keyframes mainFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .page {
+    padding-top: 40px;
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header {
+    position: relative;
+    top: 5px;
+    z-index: 20;
+    margin-bottom: 2rem;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .code-side {
+    position: relative;
+    padding: 0;
+    /* Removed all horizontal gaps */
+    width: 100%;
+    z-index: 15;
+    background: transparent;
+    text-align: left;
+  }
+
+  .code-text {
+    font-size: 12px;
+    /* Increased for better readability on small screens */
+    line-height: 1.5;
+    pointer-events: none;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    white-space: pre-wrap;
+    /* Enable wrapping as requested */
+  }
+
+  .globe-side {
+    position: fixed;
+    /* Keep it stationary while text scrolls */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    height: 80vh;
+    width: 150vw;
+    z-index: 5;
+    margin: 0;
+    pointer-events: auto;
+  }
+
+  .slider-container {
+    width: 250px;
+    height: 50px;
+  }
+
+  .slider-handle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .slider-label {
+    font-size: 0.75rem;
+  }
+
+  .intro-text {
+    font-size: 1.6rem;
+    padding: 0 2rem;
+  }
+}
+
+/* Height-based fix for smaller laptops (like 14-inch screens) */
+@media (max-height: 820px) and (min-width: 801px) {
+  .page {
+    padding: 60px 4rem 2rem 4rem;
+  }
+
+  .header {
+    top: 20px;
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .code-text {
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+
+  .globe-side {
+    width: 750px;
+    height: 750px;
+    right: -250px;
+  }
+}
