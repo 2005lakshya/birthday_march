@@ -173,10 +173,7 @@ System.out.println("Happy Birthday Harshita!");`;
           className="page"
         >
           <header className="header">
-            <h1 className="header-mobile-wrap">
-              <span>Happy Birthday </span>
-              <span className="name-line">Harshita</span>
-            </h1>
+            <h1>Happy Birthday Harshita</h1>
           </header>
 
           <section className="code-side">

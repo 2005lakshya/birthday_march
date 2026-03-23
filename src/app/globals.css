@@ -283,11 +283,12 @@ body {
   }
 
   .header h1 {
-    font-size: 1.6rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
+    font-size: 6vw;
+    /* Dynamically scale to width */
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+    margin: 0;
   }
 
   .code-side {
