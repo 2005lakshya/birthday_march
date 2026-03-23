@@ -173,7 +173,38 @@ System.out.println("Happy Birthday Harshita!");`;
           className="page"
         >
           <header className="header">
-            <h1>Happy Birthday Harshita</h1>
+            <h1>
+              Happy Birthday Harshita
+              <span className="cake-animate" aria-label="cake" style={{ display: 'inline-block', marginLeft: '12px', verticalAlign: 'middle' }}>
+                <svg width="38" height="38" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Plate */}
+                  <ellipse cx="30" cy="56" rx="22" ry="4" fill="#b0b0b0"/>
+                  {/* Bottom Layer */}
+                  <rect x="10" y="38" width="40" height="12" rx="6" fill="#ffb347"/>
+                  <rect x="10" y="38" width="40" height="6" rx="6" fill="#ffe0b2"/>
+                  {/* Middle Layer */}
+                  <rect x="16" y="28" width="28" height="12" rx="6" fill="#ff69b4"/>
+                  <rect x="16" y="28" width="28" height="6" rx="6" fill="#fff3e0"/>
+                  {/* Top Layer */}
+                  <rect x="22" y="20" width="16" height="10" rx="5" fill="#7ed6df"/>
+                  <rect x="22" y="20" width="16" height="5" rx="5" fill="#fff3e0"/>
+                  {/* Candles */}
+                  <rect x="26" y="14" width="2" height="8" rx="1" fill="#ffe066"/>
+                  <rect x="30" y="12" width="2" height="10" rx="1" fill="#ffe066"/>
+                  <rect x="34" y="14" width="2" height="8" rx="1" fill="#ffe066"/>
+                  {/* Candle Flames */}
+                  <ellipse className="cake-flame" cx="27" cy="14" rx="1" ry="2" fill="#ffbe76"/>
+                  <ellipse className="cake-flame" cx="31" cy="12" rx="1" ry="2" fill="#ffbe76"/>
+                  <ellipse className="cake-flame" cx="35" cy="14" rx="1" ry="2" fill="#ffbe76"/>
+                  {/* Sparkles */}
+                  <circle className="cake-sparkle" cx="18" cy="24" r="1.2" fill="#fff200"/>
+                  <circle className="cake-sparkle" cx="42" cy="22" r="1.2" fill="#fff200"/>
+                  <circle className="cake-sparkle" cx="30" cy="18" r="1.2" fill="#fff200"/>
+                  <circle className="cake-sparkle" cx="24" cy="34" r="1" fill="#00c3ff"/>
+                  <circle className="cake-sparkle" cx="36" cy="36" r="1" fill="#ff5252"/>
+                </svg>
+              </span>
+            </h1>
           </header>
 
           <section className="code-side">
