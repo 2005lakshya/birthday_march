@@ -29,9 +29,15 @@ const globeConfig = {
 };
 
 const Slider = ({ onComplete }: { onComplete: () => void }) => {
+  // Match the actual slider width (container: 300px, handle: 50px, padding: 5px each side)
+  const SLIDER_WIDTH = 300;
+  const HANDLE_WIDTH = 50;
+  const PADDING = 5;
+  const DRAG_MAX = SLIDER_WIDTH - HANDLE_WIDTH - PADDING * 2; // 300 - 50 - 10 = 240
+
   const x = useMotionValue(0);
-  const opacity = useTransform(x, [0, 200], [1, 0]);
-  const width = useTransform(x, [0, 195], ["0%", "100%"]); // Matches mobile better
+  const opacity = useTransform(x, [0, DRAG_MAX * 0.7], [1, 0]);
+  const width = useTransform(x, [0, DRAG_MAX], ["0%", "100%"]);
 
   return (
     <div className="slider-container">
@@ -43,12 +49,12 @@ const Slider = ({ onComplete }: { onComplete: () => void }) => {
       </div>
       <motion.div
         drag="x"
-        dragConstraints={{ left: 0, right: 195 }} // More conservative to fit all screens
+        dragConstraints={{ left: 0, right: DRAG_MAX }}
         dragElastic={0}
         dragMomentum={false}
         style={{ x }}
         onDragEnd={() => {
-          if (x.get() > 180) {
+          if (x.get() > DRAG_MAX - 10) {
             onComplete();
           }
         }}
