@@ -136,15 +136,15 @@ export default function Home() {
   };
 
   const codeText = `/**
- * Today, the 24th day of March, is your birthday.
+ * Today, the 26th day of March, is your birthday.
  * So I created a webpage to celebrate this special day.
  */
 Girl u = new Girl("Harshita");
-// March 24th, when the bell rang, your age increased 
+// March 26th, when the bell rang, your age increased 
 Date time = new Date(); 
 SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 String dateStr = fmt.format(time);
-if( dateStr.equals("2026-03-24 00:00:00") ){
+if( dateStr.equals("2026-03-26 00:00:00") ){
     u.age ++;
 }
 // My best wishes will be with you simultaneously.
