@@ -221,25 +221,27 @@ function Marker({
             transition: "opacity 0.15s ease-out",
           }}
         >
-          <div
-            className={cn(
-              "cursor-pointer overflow-hidden rounded-full border border-white/40 bg-neutral-900 shadow-md transition-all duration-300",
-              hovered && "scale-125 shadow-lg ring-1 ring-white/50",
-            )}
-            style={{
-              width: "12px",
-              height: "12px",
-            }}
-            onMouseEnter={handlePointerEnter}
-            onMouseLeave={handlePointerLeave}
-            onClick={handleClick}
-          >
-            <img
-              src={marker.src}
-              alt={marker.label || "Marker"}
-              className="h-full w-full object-cover"
-              draggable={false}
-            />
+          <div className="flex flex-col items-center gap-1">
+            <div
+              className={cn(
+                "cursor-pointer overflow-hidden rounded-full border border-white/40 bg-neutral-900 shadow-md transition-all duration-300",
+                hovered && "scale-140 shadow-lg ring-1 ring-white/50",
+              )}
+              style={{
+                width: "16px",
+                height: "16px",
+              }}
+              onMouseEnter={handlePointerEnter}
+              onMouseLeave={handlePointerLeave}
+              onClick={handleClick}
+            >
+              <img
+                src={marker.src}
+                alt={marker.label || "Marker"}
+                className="h-full w-full object-cover"
+                draggable={false}
+              />
+            </div>
           </div>
         </Html>
       </group>

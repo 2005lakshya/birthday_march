@@ -26,7 +26,7 @@ const globeConfig = {
   baseColor: [0, 0, 0],
   glowColor: [1, 1, 1],
   markerColor: [1, 0, 0],
-  autoRotateSpeed: 0.5
+  autoRotateSpeed: 0.6
 };
 
 const Slider = ({ onComplete }: { onComplete: () => void }) => {

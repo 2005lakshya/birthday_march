@@ -449,6 +449,15 @@ a, button, [role="button"], .cursor-pointer, .slider-handle, .cake-animate {
     font-size: 1.6rem;
     padding: 0 2rem;
   }
+
+  .copyright {
+    position: relative;
+    bottom: auto;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    margin-top: auto;
+    z-index: 20;
+  }
 }
 
 /* Height-based fix for smaller laptops (like 14-inch screens) */
