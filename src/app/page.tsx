@@ -3,6 +3,7 @@
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Globe3D, GlobeMarker } from "@/components/ui/3d-globe";
+import confetti from "canvas-confetti";
 
 const markers: GlobeMarker[] = [
   {
@@ -29,11 +30,10 @@ const globeConfig = {
 };
 
 const Slider = ({ onComplete }: { onComplete: () => void }) => {
-  // Match the actual slider width (container: 300px, handle: 50px, padding: 5px each side)
   const SLIDER_WIDTH = 300;
   const HANDLE_WIDTH = 50;
   const PADDING = 5;
-  const DRAG_MAX = SLIDER_WIDTH - HANDLE_WIDTH - PADDING * 2; // 300 - 50 - 10 = 240
+  const DRAG_MAX = SLIDER_WIDTH - HANDLE_WIDTH - PADDING * 2;
 
   const x = useMotionValue(0);
   const opacity = useTransform(x, [0, DRAG_MAX * 0.7], [1, 0]);
@@ -44,7 +44,7 @@ const Slider = ({ onComplete }: { onComplete: () => void }) => {
       <div className="slider-track">
         <motion.div style={{ width }} className="slider-fill" />
         <motion.span style={{ opacity }} className="slider-label">
-          Slide to Reveal
+          Hold & Slide to Reveal
         </motion.span>
       </div>
       <motion.div
@@ -97,9 +97,42 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [typedText, setTypedText] = useState("");
   const [showBirthday, setShowBirthday] = useState(false);
+  const [candlesOut, setCandlesOut] = useState(false);
 
   const handleComplete = () => {
     setShowBirthday(true);
+    
+    // Grand celebration burst
+    const duration = 5 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    function randomInRange(min: number, max: number) {
+      return Math.random() * (max - min) + min;
+    }
+
+    const interval: any = setInterval(function() {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+      confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+      confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+    }, 250);
+  };
+
+  const handleCakeClick = () => {
+    setCandlesOut(!candlesOut);
+    // Burst splash effect
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#ff007f', '#00d4ff', '#ffffff', '#ffd700']
+    });
   };
 
   const codeText = `/**
@@ -181,10 +214,15 @@ System.out.println("Happy Birthday Harshita!");`;
           <header className="header">
             <h1>
               Happy Birthday Harshita
-              <span className="cake-animate" aria-label="cake" style={{ display: 'inline-block', marginLeft: '12px', verticalAlign: 'middle' }}>
-                <svg width="38" height="38" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <span 
+                className={`cake-animate ${candlesOut ? 'candles-out' : ''}`} 
+                aria-label="cake" 
+                style={{ display: 'inline-block', marginLeft: '12px', verticalAlign: 'middle', cursor: 'pointer' }}
+                onClick={handleCakeClick}
+              >
+                <svg width="42" height="42" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Plate */}
-                  <ellipse cx="30" cy="56" rx="22" ry="4" fill="#b0b0b0"/>
+                  <ellipse cx="30" cy="56" rx="22" ry="4" fill="#666"/>
                   {/* Bottom Layer */}
                   <rect x="10" y="38" width="40" height="12" rx="6" fill="#ffb347"/>
                   <rect x="10" y="38" width="40" height="6" rx="6" fill="#ffe0b2"/>

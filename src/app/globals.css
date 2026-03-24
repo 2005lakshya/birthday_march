@@ -6,6 +6,13 @@
 .cake-flame {
   transform-origin: center bottom;
   animation: flame-flicker 0.7s infinite alternate;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.candles-out .cake-flame {
+  opacity: 0;
+  transform: scaleY(0) translateY(10px);
+  animation: none;
 }
 
 .cake-sparkle {
@@ -64,6 +71,13 @@ body {
   background-color: #000000 !important;
   color: #ffffff;
   overflow: hidden;
+  /* Diamond Sparkle Cursor */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%2300d4ff'><path d='M12 2L15 12L22 15L15 18L12 22L9 18L2 15L9 12Z'/></svg>") 12 12, auto;
+}
+
+a, button, [role="button"], .cursor-pointer, .slider-handle, .cake-animate {
+  /* Gold Sparkle for links/interactive */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23ffd700'><path d='M12 2L15 12L22 15L15 18L12 22L9 18L2 15L9 12Z'/></svg>") 12 12, pointer !important;
 }
 
 .page {
@@ -96,7 +110,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
@@ -320,6 +333,43 @@ body {
   }
 }
 
+/* Music Control Button */
+.music-control {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  color: white;
+}
+
+.music-control:hover {
+  transform: scale(1.15) translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ff007f;
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+}
+
+.music-control.playing {
+  animation: music-bounce 2s infinite ease-in-out;
+}
+
+@keyframes music-bounce {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.1) translateY(-10px); }
+}
+
 @media (max-width: 800px) {
   .page {
     padding-top: 40px;
@@ -424,5 +474,39 @@ body {
     width: 750px;
     height: 750px;
     right: -250px;
+  }
+}
+
+/* Landscape or Short Mobile screens */
+@media (max-height: 700px) and (max-width: 800px) {
+  .page {
+    padding-top: 20px;
+  }
+  .header {
+    margin-bottom: 0.5rem;
+  }
+  .header h1 {
+    font-size: 5.5vw;
+  }
+  .code-text {
+    font-size: 10.5px;
+    line-height: 1.3;
+  }
+  .globe-side {
+    height: 70vh;
+    transform: translate(-50%, -30%);
+  }
+  .intro-content {
+    gap: 1.5rem;
+  }
+  .intro-text {
+    font-size: 1.4rem;
+  }
+  .slider-container {
+    height: 44px;
+  }
+  .slider-handle {
+    width: 36px;
+    height: 36px;
   }
 }
